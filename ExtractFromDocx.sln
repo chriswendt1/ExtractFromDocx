@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtractFromDocx", "ExtractFromDocx.csproj", "{4C08CF5D-3369-4F37-9032-6DD567523D9B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C08CF5D-3369-4F37-9032-6DD567523D9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C08CF5D-3369-4F37-9032-6DD567523D9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C08CF5D-3369-4F37-9032-6DD567523D9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C08CF5D-3369-4F37-9032-6DD567523D9B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0973B87E-C774-4189-A51B-CD500C0A04F9}
+	EndGlobalSection
+EndGlobal
