@@ -19,7 +19,7 @@ void TraverseDirectory(string path, string outFile, Action<string, string> actio
 {
     foreach (string file in Directory.GetFiles(path))
     {
-        if (file.ToUpperInvariant().Contains("_EN.") && (Path.GetExtension(file).ToLowerInvariant() == ".txt"))
+        if ((file.ToUpperInvariant().Contains("_EN.") || file.Contains("Source")) && (Path.GetExtension(file).ToLowerInvariant() == ".txt"))
         {
             action(file, outFile);
             continue;
@@ -42,7 +42,9 @@ void ProcessFile(string txtFileName, string outFileName)
 
 
     string targetFileName = txtFileName.Replace("_EN.", "_ES.");
-    if (!File.Exists(targetFileName))
+    if ((!File.Exists(targetFileName)) || (targetFileName == txtFileName))
+        targetFileName = txtFileName.Replace("Source", "Translated");
+    if ((!File.Exists(targetFileName)) || (targetFileName == txtFileName))
     {
         Console.WriteLine($"ERROR: Target file {targetFileName} not found.");
         return;

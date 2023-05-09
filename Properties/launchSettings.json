@@ -2,7 +2,7 @@
   "profiles": {
     "ExtractFromDocx": {
       "commandName": "Project",
-      "commandLineArgs": "\"C:\\Users\\wendt\\OneDrive - American Red Cross\\TrainingData\""
+      "commandLineArgs": "\"C:\\Users\\wendt\\OneDrive - American Red Cross\\TrainingData\\Suggested documents\""
     }
   }
 }
