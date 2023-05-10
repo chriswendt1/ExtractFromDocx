@@ -1,4 +1,4 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Text.RegularExpressions;
 
 struct TextPair
 {
@@ -6,7 +6,7 @@ struct TextPair
     public string? targetText;
 }
 
-static class TextPairs
+static partial class TextPairs
 {
     public static List<TextPair> Align(List<string> sourceTexts, List<string> targetTexts)
     {
@@ -20,8 +20,8 @@ static class TextPairs
         {
             TextPair pair = new()
             {
-                sourceText = i < newSourceTexts.Count ? newSourceTexts[i].Trim() : null,
-                targetText = i < newTargetTexts.Count ? newTargetTexts[i].Trim() : null
+                sourceText = i < newSourceTexts.Count ? RemoveMarkup(newSourceTexts[i]) : null,
+                targetText = i < newTargetTexts.Count ? RemoveMarkup(newTargetTexts[i]) : null
             };
             pairs.Add(pair);
         }
@@ -33,10 +33,40 @@ static class TextPairs
         List<string> result = new();
         foreach (string input in inputList)
         {
-            if (!(string.IsNullOrEmpty(input.Trim()))) result.Add(input.Trim());
+            if (!string.IsNullOrEmpty(input.Trim())) result.Add(input.Trim());
         }
         return result;
     }
+
+    private static string RemoveMarkup(string tuv)
+    {
+        /*
+        // regular expression pattern to match XML tags
+        string pattern = @"<[^>]+>";
+
+        // remove all XML tags from the string
+        string plainText = Regex.Replace(tuv, pattern, "");
+        */
+        //other cleanup
+        string plainText = tuv;
+
+        plainText = plainText.Replace("\t", " ");
+        plainText = plainText.Replace("•", "");
+        plainText = plainText.StartsWith("-") ? plainText[1..] : plainText;
+        plainText = plainText.StartsWith("■") ? plainText[1..] : plainText;
+        plainText = plainText.StartsWith("*") ? plainText[1..] : plainText;
+        plainText = plainText.StartsWith("o ") ? plainText[2..] : plainText;
+        plainText = plainText.StartsWith("\"") ? "\"" + plainText : plainText;
+        plainText = RxMultiPeriod().Replace(plainText, ".");
+
+
+        // output plain text string
+        return plainText.Trim();
+
+    }
+
+    [GeneratedRegex("\\.+")]
+    private static partial Regex RxMultiPeriod();
 }
 
 
